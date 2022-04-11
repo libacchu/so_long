@@ -6,7 +6,7 @@
 #    By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/02 18:29:29 by libacchu          #+#    #+#              #
-#    Updated: 2022/04/03 20:26:46 by libacchu         ###   ########.fr        #
+#    Updated: 2022/04/11 11:19:38 by libacchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,23 +19,36 @@ CC = gcc -Wall -Werror -Wextra
 RM = rm -f
 PROGRAM = ./so_long
 
+LIBFT = libft.a
+MAKE_LIBFT = make re -C ./libft
+CLEAN_LIBFT = make clean -C ./libft/
+FLCEAN_LIBFT = make fclean -C ./libft/
+RE_LIBFT = make re -C ./libft/
+
 MAKE_MLX = make ./minilibx
 RE_MLX = re ./minilibx
 LMLX = -I /usr/X11/include -g -L/usr/X11/lib -lmlx -framework OpenGL -framework AppKit
 
 
-all: $(NAME)
+all: $(NAME) $(LIBFT)
+
+$(LIBFT):
+	@$(MAKE_LIBFT)
+	@cp libft/libft.a .
+	
+$(NAME): $(OBJS) $(LIBFT)
+	@$(CC) $(OBJS) $(LMLX) $(LIBFT) -o so_long
 
 %.o: %.c
 	@$(CC) -Imlx -c $< -o $@
-
-$(NAME): $(OBJS)
-	@$(CC) $(OBJS) $(LMLX) -o so_long
 	
 clean:
+	@$(CLEAN_LIBFT)
 	@$(RM) $(OBJS)
 
 fclean: clean
+	@$(FLCEAN_LIBFT)
+	@$(RM) $(LIBFT)
 	@$(RM) $(NAME)
 
 re: fclean all

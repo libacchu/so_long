@@ -6,11 +6,11 @@
 /*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:46:22 by libacchu          #+#    #+#             */
-/*   Updated: 2022/04/08 12:02:06 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/04/11 13:08:11 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./minilibx/mlx.h"
+#include "so_long.h"
 
 typedef struct s_data
 {
@@ -35,7 +35,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 int	create_trgb(int t, int r, int g, int b)
 {
-	return ()
+	return (t << 24 | r << 16 | g << 8 | b);
 }
 
 int	main(void)
@@ -45,11 +45,12 @@ int	main(void)
 	t_data	img;
 
 	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "so_long");
-	img.img = mlx_new_image(mlx, 1920, 1080);
+	mlx_win = mlx_new_window(mlx, 500, 500, "so_long");
+	img.img = mlx_new_image(mlx, 200, 200);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
 			&img.line_length, &img.endian);
-	my_mlx_pixel_put(&img, 20, 20, 0x00FF0000);
+	mlx_pixel_put(&img, mlx_win, 5, 5, 0xFFFF0000);
+	// my_mlx_pixel_put(&img, 5, 5, 0xFFFF0000);
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
 }
