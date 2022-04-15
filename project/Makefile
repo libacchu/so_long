@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+         #
+#    By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/02 18:29:29 by libacchu          #+#    #+#              #
-#    Updated: 2022/04/12 13:40:43 by libacchu         ###   ########.fr        #
+#    Updated: 2022/04/15 18:31:57 by libacchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c rectangle.c
+SRCS = main.c rectangle.c colors.c
 OBJS = $(SRCS:.c=.o)
 
 NAME = so_long

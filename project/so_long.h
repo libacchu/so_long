@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 07:29:20 by libacchu          #+#    #+#             */
-/*   Updated: 2022/04/12 13:52:41 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/04/15 22:47:52 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "./minilibx/mlx.h"
 # include "./libft/libft.h"
-#include <math.h>
+# include <math.h>
 
 typedef struct s_data
 {
@@ -38,6 +38,22 @@ typedef struct s_square
 	unsigned int	color;
 }		t_square;
 
-void	ft_draw_square(t_data img, int length, unsigned int color);
+void	ft_draw_rectangle(t_data img, int len, int wid, unsigned int color);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+
+// Color handling
+typedef struct s_trbg
+{
+	int	t;
+	int	r;
+	int	b;
+	int	g;
+	int	tmp;
+}		t_trgb;
+int		create_trgb(int t, int r, int g, int b);
+int		get_t(int trgb);
+int		get_r(int trgb);
+int		get_g(int trgb);
+int		get_b(int trgb);
+
 #endif
