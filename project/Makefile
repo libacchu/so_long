@@ -6,11 +6,11 @@
 #    By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/02 18:29:29 by libacchu          #+#    #+#              #
-#    Updated: 2022/04/15 18:31:57 by libacchu         ###   ########.fr        #
+#    Updated: 2022/04/15 23:07:00 by libacchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c rectangle.c colors.c
+SRCS = main.c rectangle.c colors.c events.c
 OBJS = $(SRCS:.c=.o)
 
 NAME = so_long

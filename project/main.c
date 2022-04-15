@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:46:22 by libacchu          #+#    #+#             */
-/*   Updated: 2022/04/15 22:42:53 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/04/15 23:07:22 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,6 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	ft_close(int keystroke, t_window *win)
-{
-	(void) keystroke;
-	mlx_destroy_window(win->mlx, win->win);
-	exit (0);
-}
-
 int	main(void)
 {
 	t_window	win;
@@ -46,14 +39,3 @@ int	main(void)
 	mlx_put_image_to_window(win.mlx, win.win, img.img, 0, 0);
 	mlx_loop(win.mlx);
 }
-
-	// while (i < 200)
-	// {
-	// 	j = 5;
-	// 	while (j < 495)
-	// 	{
-	// 		my_mlx_pixel_put(&img, j, i, 0xFFFF00);
-	// 		j++;
-	// 	}
-	// 	i++;
-	// }

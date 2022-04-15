@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 07:29:20 by libacchu          #+#    #+#             */
-/*   Updated: 2022/04/15 22:47:52 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/04/15 23:08:25 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "./libft/libft.h"
 # include <math.h>
 
+// Window handling
 typedef struct s_data
 {
 	void	*img;
@@ -32,14 +33,15 @@ typedef struct s_window
 	void	*win;
 }		t_window;
 
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+
+// Drawing Image
+void	ft_draw_rectangle(t_data img, int len, int wid, unsigned int color);
 typedef struct s_square
 {
 	int				length;
 	unsigned int	color;
 }		t_square;
-
-void	ft_draw_rectangle(t_data img, int len, int wid, unsigned int color);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 // Color handling
 typedef struct s_trbg
@@ -56,4 +58,6 @@ int		get_r(int trgb);
 int		get_g(int trgb);
 int		get_b(int trgb);
 
+// Event handling
+int		ft_close(int keystroke, t_window *win);
 #endif
