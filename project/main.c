@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:46:22 by libacchu          #+#    #+#             */
-/*   Updated: 2022/04/15 23:07:22 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/04/16 11:54:27 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	main(void)
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
 			&img.line_length, &img.endian);
 	mlx_hook(win.win, 3, 1L << 0, ft_close, &win);
+	mlx_hook(win.win, 17, 0, ft_close_win, &win);
 	ft_draw_rectangle(img, 1920, 1080, 0x00000000);
 	mlx_put_image_to_window(win.mlx, win.win, img.img, 0, 0);
 	mlx_loop(win.mlx);

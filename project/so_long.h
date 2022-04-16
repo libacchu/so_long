@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 07:29:20 by libacchu          #+#    #+#             */
-/*   Updated: 2022/04/15 23:08:25 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/04/16 11:55:00 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,16 @@ int		get_b(int trgb);
 
 // Event handling
 int		ft_close(int keystroke, t_window *win);
+int		ft_close_win(int keycode, t_window *win);
+
+// Keyboard
+enum	e_keystroke
+{
+	ON_ESC = 53,
+	ON_W = 13,
+	ON_A = 0,
+	ON_S = 1,
+	ON_D = 2,
+};
+
 #endif
