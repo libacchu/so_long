@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 07:29:20 by libacchu          #+#    #+#             */
-/*   Updated: 2022/04/16 11:55:00 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/04/24 18:39:50 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,16 @@
 # include "./libft/libft.h"
 # include <math.h>
 
+# define IMAGE "./assets/baum1.xpm"
+# define PLAYER "./assets/player.xpm"
+
 // Window handling
+typedef struct s_window
+{
+	void	*mlx;
+	void	*win;
+}		t_window;
+
 typedef struct s_data
 {
 	void	*img;
@@ -26,12 +35,6 @@ typedef struct s_data
 	int		line_length;
 	int		endian;
 }		t_data;
-
-typedef struct s_window
-{
-	void	*mlx;
-	void	*win;
-}		t_window;
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
@@ -58,18 +61,31 @@ int		get_r(int trgb);
 int		get_g(int trgb);
 int		get_b(int trgb);
 
-// Event handling
-int		ft_close(int keystroke, t_window *win);
-int		ft_close_win(int keycode, t_window *win);
-
 // Keyboard
 enum	e_keystroke
 {
-	ON_ESC = 53,
-	ON_W = 13,
-	ON_A = 0,
-	ON_S = 1,
-	ON_D = 2,
+	KEY_ESC = 53,
+	KEY_W = 13,
+	KEY_A = 0,
+	KEY_S = 1,
+	KEY_D = 2,
 };
+
+// Reading images
+typedef struct s_image
+{
+	void	*img;
+	char	*relative_path;
+	int		img_width;
+	int		img_height;
+	int		x;
+	int		y;
+}	t_image;
+
+// Event handling
+int		ft_close(int keystroke, t_window *win);
+int		ft_close_win(int keycode, t_window *win);
+int		key_hook(int keycode, t_window *win);
+int		ft_move_img(int keystroke, t_image *img);
 
 #endif

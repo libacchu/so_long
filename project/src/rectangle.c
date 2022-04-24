@@ -6,11 +6,11 @@
 /*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 13:24:13 by libacchu          #+#    #+#             */
-/*   Updated: 2022/04/15 22:54:23 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/04/23 11:22:09 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void	ft_draw_rectangle(t_data img, int len, int wid, unsigned int color)
 {
