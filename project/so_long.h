@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 07:29:20 by libacchu          #+#    #+#             */
-/*   Updated: 2022/04/24 18:39:50 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/04/26 12:22:00 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@
 # include "./libft/libft.h"
 # include <math.h>
 
-# define IMAGE "./assets/baum1.xpm"
-# define PLAYER "./assets/player.xpm"
+# define MAP_PLAYER "./assets/player.xpm"
+# define MAP_EMPTY_SPACE "./assets/wooden.xpm"
+# define MAP_WALLS "./assets/walls.xpm"
+# define MAP_COLLECT "./assets/chest_01.xpm"
+# define MAP_EXIT "./assets/exit.xpm"
 
 // Window handling
 typedef struct s_window

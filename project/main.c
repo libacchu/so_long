@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:46:22 by libacchu          #+#    #+#             */
-/*   Updated: 2022/04/24 18:53:57 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/04/26 12:23:34 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ int	main(void)
 	main_c.x = 0;
 	main_c.y = 0;
 	win.mlx = mlx_init();
-	win.win = mlx_new_window(win.mlx, 1920, 1080, "so_long");
+	win.win = mlx_new_window(win.mlx, 640, 360, "so_long");
+	main_c.img = mlx_xpm_file_to_image(win.mlx, MAP_COLLECT,
+			&main_c.img_width, &main_c.img_height);
 	mlx_put_image_to_window(win.mlx, win.win, main_c.img, main_c.x, main_c.x);
 	mlx_hook(win.win, 3, 1L << 0, ft_close, &win);
 	mlx_key_hook(win.win, ft_move_img, &main_c);
 	mlx_hook(win.win, 17, 0, ft_close_win, &win);
-	main_c.img = mlx_xpm_file_to_image(win.mlx, IMAGE,
-			&main_c.img_width, &main_c.img_height);
 	mlx_loop(win.mlx);
 }
