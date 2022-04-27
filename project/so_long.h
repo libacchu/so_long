@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 07:29:20 by libacchu          #+#    #+#             */
-/*   Updated: 2022/04/26 12:22:00 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/04/27 15:47:33 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "./minilibx/mlx.h"
 # include "./libft/libft.h"
+# include <unistd.h>
+# include <fcntl.h>
 # include <math.h>
 
 # define MAP_PLAYER "./assets/player.xpm"
@@ -77,12 +79,18 @@ enum	e_keystroke
 // Reading images
 typedef struct s_image
 {
-	void	*img;
+	void	*img_player;
+	void	*img_empty_space;
+	void	*img_walls;
+	void	*img_collect;
+	void	*img_exit;
+	char	**map;
+	char	*map_path;
 	char	*relative_path;
 	int		img_width;
 	int		img_height;
-	int		x;
-	int		y;
+	int		map_x;
+	int		map_y;
 }	t_image;
 
 // Event handling
