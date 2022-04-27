@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 10:23:32 by libacchu          #+#    #+#             */
-/*   Updated: 2022/04/27 15:52:51 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/04/27 19:58:07 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	ft_numoflines(void)
+int	ft_numoflines(t_image *game)
 {
-	char *line;
-	int	fd;
-	int	i;
+	char	*line;
+	int		fd;
+	int		i;
 
-	fd = open("../maps/test1.ber1", O_RDONLY);
+	fd = open(game->map_path, O_RDONLY);
 	line = get_next_line(fd);
 	if (!line || !fd)
 		return (0);
@@ -28,6 +28,7 @@ int	ft_numoflines(void)
 		line = get_next_line(fd);
 		i++;
 	}
+	free(line);
 	close(fd);
 	return (i);
 }
@@ -35,14 +36,10 @@ int	ft_numoflines(void)
 void	ft_read_map(t_image *game)
 {
 	int	fd;
-	char buff[10000];
 	int	i;
-	int	x;
 
-	game->map_y = ft_numoflines();
-	fd = open("../maps/test1.ber1", O_RDONLY);
-	ft_printf("\n y = %d\n", game->map_y);
-	ft_printf("\n-------HERE-------\n");
+	game->map_y = ft_numoflines(game);
+	fd = open(game->map_path, O_RDONLY);
 	game->map = (char **)malloc(11 * sizeof(char *));
 	i = 0;
 	while (i < game->map_y)
@@ -51,12 +48,14 @@ void	ft_read_map(t_image *game)
 		ft_printf("%s", game->map[i]);
 		i++;
 	}
-	game->map_x = ft_strlen(game->map[i]);
-	ft_printf("\nx = %d\n", x);
+	game->map_x = ft_strlen(game->map[i - 1]);
+	close(fd);
 }
 
 int main(void)
 {
 	t_image test = { 0 };
+
+	test.map_path = "../maps/test.ber";
 	ft_read_map(&test);
 }

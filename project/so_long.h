@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 07:29:20 by libacchu          #+#    #+#             */
-/*   Updated: 2022/04/27 15:47:33 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/04/27 19:27:40 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ typedef struct s_image
 	int		img_height;
 	int		map_x;
 	int		map_y;
+	int		x;
+	int		y;
 }	t_image;
 
 // Event handling
