@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:46:22 by libacchu          #+#    #+#             */
-/*   Updated: 2022/04/27 19:16:05 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/04/28 13:57:25 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,16 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	main(void)
+int	main(int ac, char **av)
 {
 	t_window	win;
 	t_image		main_c;
 
+	if (ac != 2)
+		return (0);
+	main_c.map_path = av[1];
+	ft_read_map(&main_c);
+	
 	main_c.img_height = 10;
 	main_c.img_width = 10;
 	main_c.map_x = 0;

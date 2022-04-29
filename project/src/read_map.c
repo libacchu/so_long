@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 10:23:32 by libacchu          #+#    #+#             */
-/*   Updated: 2022/04/27 19:58:07 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/04/29 09:43:35 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,22 @@ void	ft_read_map(t_image *game)
 	close(fd);
 }
 
-int main(void)
+void	ft_load_map(t_image *game)
 {
-	t_image test = { 0 };
-
-	test.map_path = "../maps/test.ber";
-	ft_read_map(&test);
+	int	i;
+	
+	i = 0;
+	while (i < game->map_y)
+	{
+		
+	}
+	
 }
+
+// int main(void)
+// {
+// 	t_image test = { 0 };
+
+// 	test.map_path = "../maps/test.ber";
+// 	ft_read_map(&test);
+// }
