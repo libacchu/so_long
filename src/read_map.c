@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 10:10:57 by libacchu          #+#    #+#             */
-/*   Updated: 2022/04/29 16:43:01 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/05/01 14:49:52 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,12 @@ int	ft_numoflines(t_game *game)
 
 	fd = open(game->map_path, O_RDONLY);
 	line = get_next_line(fd);
+	if (!line || !fd || fd < 0)
+	{
+		perror("Error");
+		exit (0);
+	}
 	line_len = ft_strlen(line) - 1;
-	if (!line || !fd)
-		return (0);
 	game->map_y = 0;
 	while (line != NULL)
 	{
@@ -76,19 +79,79 @@ int	ft_numoflines(t_game *game)
 	return (game->map_y);
 }
 
-void	ft_check_map_char(char *line, t_game *game)
+void	ft_check_map_char(t_game *game)
 {
-	if (ft_strchr(line, '0'))
-		game->
-	
 	int	i;
+	int	j;
 
 	i = 0;
-	while (line[i])
+	while (game->map[i] && i < game->map_y)
 	{
-		if (line[i] == )
+		j = 0;
+		while (game->map[i][j])
+		{
+			if (i == 0 || i == (game->map_y - 1))
+			{
+				if (game->map[i][j] != '1' && game->map[i][j] != '\n')
+				{
+					ft_putstr_fd("Error:\nInvalid map.\n", 1);
+					exit (0);
+				}
+			}
+			if ((j == 0 || j == (game->map_x - 1))
+				&& (game->map[i][j] != '1'))
+			{
+				ft_putstr_fd("Error:\nInvalid map.\n", 1);
+				exit (0);
+			}
+			if (game->map[i][j] == '0')
+				game->mapc->m_spaces = 1;
+			else if (game->map[i][j] == '1')
+				game->mapc->m_wall = 1;
+			else if (game->map[i][j] == 'C')
+				game->mapc->m_collectible = 1;
+			else if (game->map[i][j] == 'E')
+				game->mapc->m_exit = 1;
+			else if (game->map[i][j] == 'P')
+				game->mapc->m_player++;
+			else
+			{
+				ft_putstr_fd("Error:\nInvalid map.\n", 1);
+				exit (0);
+			}
+			ft_printf("\n----------HERE----------\n");
+			j++;
+		}
 		i++;
 	}
+	if (!game->mapc->m_spaces || !game->mapc->m_wall
+		||!game->mapc->m_collectible || !game->mapc->m_exit
+		|| game->mapc->m_player > 1 || !game->mapc->m_player)
+	{
+		ft_putstr_fd("Error:\nInvalid map.\n", 1);
+		exit (0);
+	}
+	// i = 0;
+	// while (line[i])
+	// {
+	// 	if (ft_strchr(&line[i], '0'))
+	// 		game->mapc->m_spaces = 1;
+	// 	else if (ft_strchr(&line[i], '1'))
+	// 		game->mapc->m_wall = 1;
+	// 	else if (ft_strchr(&line[i], 'C'))
+	// 		game->mapc->m_collectible = 1;
+	// 	else if (ft_strchr(&line[i], 'E'))
+	// 		game->mapc->m_exit = 1;
+	// 	else if (ft_strchr(&line[i], 'P'))
+	// 		game->mapc->m_player = 1;
+	// 	else
+	// 	{
+	// 		ft_putstr_fd("Error:\nInvalid map.\n", 1);
+	// 		free(game->map);
+	// 		exit (0);
+	// 	}
+	// 	i++;
+	// }
 }
 
 void	ft_read_map(t_game *game)
@@ -104,9 +167,10 @@ void	ft_read_map(t_game *game)
 	while (i < game->map_y)
 	{
 		game->map[i] = get_next_line(fd);
-		ft_printf("%s", game->map[i]);
+		// ft_printf("%s", game->map[i]);
 		i++;
 	}
 	game->map_x = ft_strlen(game->map[i - 1]);
 	close(fd);
+	ft_check_map_char(game);
 }

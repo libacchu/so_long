@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 13:46:22 by libacchu          #+#    #+#             */
-/*   Updated: 2022/04/29 16:22:12 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/05/01 12:08:44 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int ac, char **av)
 	}
 	game.map_path = av[1];
 	ft_read_map(&game);
-	ft_printf("\n-----HERE-----\n");
+	// ft_printf("\n-----HERE-----\n");
 	// win.mlx = mlx_init();
 	// win.win = mlx_new_window(win.mlx, (game.map_x * 32),
 	// 		(game.map_y * 32), "so_long");

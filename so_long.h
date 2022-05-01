@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 07:29:20 by libacchu          #+#    #+#             */
-/*   Updated: 2022/04/29 16:30:17 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/05/01 10:47:18 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ typedef struct s_game
 	int		map_y;
 	int		x;
 	int		y;
-	t_mapc	mapc;
+	t_mapc	*mapc;
 }	t_game;
 
 // Event handling
