@@ -2,6 +2,7 @@
 // str 2 wordtab & co
 // by ol
 
+
 #include <stdlib.h>
 #include <string.h>
 
@@ -28,6 +29,8 @@ int	mlx_int_str_str(char *str,char *find,int len)
     }
   return (-1);
 }
+
+
 
 int	mlx_int_str_str_cote(char *str,char *find,int len)
 {

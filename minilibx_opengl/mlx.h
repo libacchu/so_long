@@ -12,7 +12,6 @@
 **   MinilibX -  Please report bugs
 */
 
-
 /*
 ** FR msg - FR msg - FR msg
 **
@@ -41,11 +40,9 @@
 ** c'est normalement le cas.
 */
 
-
 #ifndef MLX_H
 
-# define MLX_H
-
+#define	MLX_H
 
 void	*mlx_init();
 /*
