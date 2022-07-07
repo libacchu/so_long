@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 07:29:20 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/06 13:04:26 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/07 16:18:23 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ typedef struct s_window
 {
 	void	*mlx;
 	void	*win;
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 }		t_window;
 
 // Keyboard
@@ -54,6 +59,7 @@ typedef struct s_mapc
 	int	m_collectible;
 	int	m_exit;
 	int	m_player;
+	int	m_newline;
 }	t_mapc;
 
 // Reading images
@@ -76,12 +82,15 @@ typedef struct s_game
 	t_mapc	*mapc;
 }	t_game;
 
+
 // Event handling
-int		ft_close(int keystroke, t_window *win);
+int		ft_key(int keystroke, t_window *win);
 int		ft_close_win(int keycode, t_window *win);
 int		key_hook(int keycode, t_window *win);
 int		ft_move_img(int keystroke, t_game *img);
 
 // Read Map
 void	ft_read_map(t_game *game);
+void	ft_error_check(t_game *game, int ac, char **av);
+int		ft_mouse(t_window *vars);
 #endif

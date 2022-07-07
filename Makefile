@@ -6,12 +6,15 @@
 #    By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/02 18:29:29 by libacchu          #+#    #+#              #
-#    Updated: 2022/07/06 14:02:20 by libacchu         ###   ########.fr        #
+#    Updated: 2022/07/07 13:46:28 by libacchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS = 	./src/main.c \
 		./src/read_map.c \
+		./src/error_check.c \
+		./src/free.c \
+		./src/win_management.c \
 
 OBJS = $(SRCS:.c=.o)
 INCLUDE = ./include/
@@ -28,13 +31,14 @@ MLX = ./minilibx_opengl/
 # LMLX = -I /usr/X11/include -g -lmlx -framework OpenGL -framework AppKit
 # LMLX = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
-all: libft mlx $(NAME)
+all: libft $(NAME)
+# all: libft mlx $(NAME)
 
 libft:
 	make -C $(LIBFT)
 
-mlx:
-	make -C $(MLX)
+# mlx:
+# 	make -C $(MLX)
 
 $(NAME): $(OBJS) libft mlx
 	# make -C $(LIBFT)
@@ -45,7 +49,7 @@ $(NAME): $(OBJS) libft mlx
 
 clean:
 	make clean -C $(LIBFT)
-	make clean -C $(MLX)
+	# make clean -C $(MLX)
 	$(RM) $(OBJS)
 
 fclean: clean
