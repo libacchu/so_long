@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 07:29:20 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/07 16:18:23 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/11 19:05:56 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 
 // Assets location
 # define MAP_PLAYER "./assets/player.xpm"
-# define MAP_EMPTY_SPACE "./assets/wooden.xpm"
-# define MAP_WALLS "./assets/walls.xpm"
-# define MAP_COLLECT "./assets/chest_01.xpm"
+# define MAP_EMPTY_SPACE "./assets/empty_space.xpm"
+# define MAP_WALLS "./assets/wall.xpm"
+# define MAP_COLLECT "./assets/collectible.xpm"
 # define MAP_EXIT "./assets/exit.xpm"
 
 // Window handling
@@ -34,12 +34,17 @@ typedef struct s_window
 {
 	void	*mlx;
 	void	*win;
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
 }		t_window;
+
+typedef struct s_image
+{
+    void	*img;
+    char	*addr;
+    char	*path;
+    int		bpp;
+    int		line_len;
+    int		endian;
+}	t_image; 
 
 // Keyboard
 enum	e_keystroke
@@ -67,8 +72,8 @@ typedef struct s_game
 {
 	void	*img_player;
 	void	*img_empty_space;
-	void	*img_walls;
-	void	*img_collect;
+	void	*img_wall;
+	void	*img_collectible;
 	void	*img_exit;
 	char	**map;
 	char	*map_path;
@@ -93,4 +98,7 @@ int		ft_move_img(int keystroke, t_game *img);
 void	ft_read_map(t_game *game);
 void	ft_error_check(t_game *game, int ac, char **av);
 int		ft_mouse(t_window *vars);
+
+//image
+void	ft_make_image(t_game *game, t_window *win);
 #endif
