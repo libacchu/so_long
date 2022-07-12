@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 13:41:15 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/12 14:06:03 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/12 21:15:00 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,5 @@ void	ft_make_image(t_game *game)
 	make_collectible(game);
 	make_exit(game);
 	put_to_screen(game);
+	game->points = 0;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 10:10:57 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/12 15:34:46 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/12 21:19:43 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	ft_check_map_char(t_game *game)
 
 	i = 0;
 	check.m_player = 0;
+	game->amt_collectible = 0;
 	while (game->map[i] && i < game->map_y)
 	{
 		j = 0;
@@ -44,7 +45,10 @@ void	ft_check_map_char(t_game *game)
 			else if (game->map[i][j] == '1')
 				check.m_wall = 1;
 			else if (game->map[i][j] == 'C')
+			{
 				check.m_collectible = 1;
+				game->amt_collectible++;
+			}
 			else if (game->map[i][j] == 'E')
 				check.m_exit = 1;
 			else if (game->map[i][j] == 'P')
