@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 07:29:20 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/11 19:05:56 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/12 15:50:37 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,26 +70,29 @@ typedef struct s_mapc
 // Reading images
 typedef struct s_game
 {
-	void	*img_player;
-	void	*img_empty_space;
-	void	*img_wall;
-	void	*img_collectible;
-	void	*img_exit;
-	char	**map;
-	char	*map_path;
-	char	*relative_path;
-	int		img_width;
-	int		img_height;
-	int		map_x;
-	int		map_y;
-	int		x;
-	int		y;
-	t_mapc	*mapc;
-}	t_game;
-
+	void		*mlx;
+	void		*win;
+	void		*img_player;
+	void		*img_empty_space;
+	void		*img_wall;
+	void		*img_collectible;
+	void		*img_exit;
+	char		**map;
+	char		*map_path;
+	int			player_x;
+	int			player_y;
+	char		*relative_path;
+	int			img_width;
+	int			img_height;
+	int			map_x;
+	int			map_y;
+	int			x;
+	int			y;
+	t_mapc		*mapc;
+}		t_game;
 
 // Event handling
-int		ft_key(int keystroke, t_window *win);
+int		ft_key(int keystroke, t_game *game);
 int		ft_close_win(int keycode, t_window *win);
 int		key_hook(int keycode, t_window *win);
 int		ft_move_img(int keystroke, t_game *img);
@@ -100,5 +103,6 @@ void	ft_error_check(t_game *game, int ac, char **av);
 int		ft_mouse(t_window *vars);
 
 //image
-void	ft_make_image(t_game *game, t_window *win);
+void	ft_make_image(t_game *game);
+void	put_to_screen(t_game *game);
 #endif

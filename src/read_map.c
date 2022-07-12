@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 10:10:57 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/07 15:35:10 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/12 15:34:46 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,11 @@ void	ft_check_map_char(t_game *game)
 			else if (game->map[i][j] == 'E')
 				check.m_exit = 1;
 			else if (game->map[i][j] == 'P')
+			{
+				game->player_x = j;
+				game->player_y = i;
 				check.m_player++;
+			}
 			else if (game->map[i][j] == '\n' || game->map[i][j] == '\0')
 				check.m_newline = 1;
 			else
