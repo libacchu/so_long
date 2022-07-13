@@ -6,13 +6,13 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:35:25 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/07 10:11:59 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/13 14:13:06 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	ft_checkline_len(char *line, size_t fst_len)
+void	ft_checkline_len(char *line, size_t fst_len, t_game *game, int fd)
 {
 	size_t	len;
 
@@ -21,8 +21,9 @@ void	ft_checkline_len(char *line, size_t fst_len)
 		len -= 1;
 	if (len != fst_len)
 	{
-		ft_putstr_fd("Error:\nInvalid map size.\n", 1);
-		exit (EXIT_FAILURE);
+		free(line);
+		close(fd);
+		ft_exit("Error", game, EXIT_FAILURE);
 	}
 }
 
@@ -35,17 +36,14 @@ int	ft_numoflines(t_game *game)
 	fd = open(game->map_path, O_RDONLY);
 	line = get_next_line(fd);
 	if (!line || !fd || fd < 0)
-	{
-		perror("Error");
-		exit (0);
-	}
+		ft_exit("Error", game, EXIT_FAILURE);
 	line_len = ft_strlen(line) - 1;
 	game->map_y = 0;
 	while (line != NULL)
 	{
 		line = get_next_line(fd);
 		if (line)
-			ft_checkline_len(line, line_len);
+			ft_checkline_len(line, line_len, game, fd);
 		game->map_y++;
 	}
 	free(line);
@@ -60,20 +58,14 @@ void	ft_checkfile_end(t_game *game)
 
 	ending = ft_strrchr(game->map_path, '.');
 	if (!ending || ft_strlen(ending) != 4)
-	{	
-		ft_putstr_fd("Error:\nInvalid map file.\n", 1);
-		exit (EXIT_FAILURE);
-	}
+		ft_exit("Error: Invalid map file.\n", game, EXIT_FAILURE);
 	else
 	{
 		i = 0;
 		while (ending[i] != '\0')
 		{
 			if (ending[i] != ".ber"[i])
-			{
-				ft_putstr_fd("Error:\nInvalid map file.\n", 1);
-				exit (EXIT_FAILURE);
-			}
+				ft_exit("Error: Invalid map file.\n", game, EXIT_FAILURE);
 			i++;
 		}
 	}
@@ -82,10 +74,7 @@ void	ft_checkfile_end(t_game *game)
 void	ft_error_check(t_game *game, int ac, char **av)
 {
 	if (ac != 2)
-	{
-		ft_putstr_fd("Error:\nInvalid input.\n", 1);
-		exit (EXIT_FAILURE);
-	}
+		ft_exit("Error: Invalid input.\n", game, EXIT_FAILURE);
 	game->map_path = av[1];
 	ft_checkfile_end(game);
 	ft_numoflines(game);

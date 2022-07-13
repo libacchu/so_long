@@ -3,14 +3,58 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 10:10:57 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/12 21:19:43 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/13 16:23:00 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+int	check_fstandlst(char *line, t_mapc *check, t_game *game)
+{
+	int	count;
+
+	count = 0;
+	while (line[count] != '\n' || line[count] != '\0')
+	{
+		if (line != '1')
+			return (1);
+		check->m_wall = 1;
+		count++;
+	}
+	if (count != game->map_x)
+		return (1);
+	return (0);
+}
+
+int	check_mid(char *line, t_mapc *check, t_game *game, int y)
+{
+	int	count;
+
+	if (line[0] != '1' && line[game->map_x - 1] != '1')
+		return (1);
+	count = 1;
+	while (line[count] != '\n' || line[count] != '\0')
+	{
+		if (line[count] == '0')
+			check->m_spaces = 1;
+		else if (line[count] == 'C')
+		{
+			check->m_collectible = 1;
+			game->amt_collectible++;
+		}
+		else if (line[count] == 'E')
+			check->m_exit = 1;
+		else if (line[count] == 'P')
+		{
+			game->player_x = count;
+			game->player_y = y;
+			check->m_player++;
+		}
+	}
+}
 
 void	ft_check_map_char(t_game *game)
 {
@@ -18,63 +62,60 @@ void	ft_check_map_char(t_game *game)
 	int		j;
 	t_mapc	check;
 
+	check = (t_mapc){};
 	i = 0;
-	check.m_player = 0;
-	game->amt_collectible = 0;
 	while (game->map[i] && i < game->map_y)
 	{
-		j = 0;
-		while (game->map[i][j])
+		if (i == 0 || i == (game->map_y - 1))
 		{
-			if (j == 0 || j == (game->map_x - 1))
-			{
-				if (game->map[i][j] != '1')
-				{
-					ft_putstr_fd("Error:\nInvalid map.\n", 1);
-					exit (0);
-				}
-			}
-			if ((j == 0 || j == (game->map_x - 1))
-				&& (game->map[i][j] != '1'))
-			{
-				ft_putstr_fd("Error:\nInvalid map.\n", 1);
-				exit (0);
-			}
-			if (game->map[i][j] == '0')
-				check.m_spaces = 1;
-			else if (game->map[i][j] == '1')
-				check.m_wall = 1;
-			else if (game->map[i][j] == 'C')
-			{
-				check.m_collectible = 1;
-				game->amt_collectible++;
-			}
-			else if (game->map[i][j] == 'E')
-				check.m_exit = 1;
-			else if (game->map[i][j] == 'P')
-			{
-				game->player_x = j;
-				game->player_y = i;
-				check.m_player++;
-			}
-			else if (game->map[i][j] == '\n' || game->map[i][j] == '\0')
-				check.m_newline = 1;
-			else
-			{
-				ft_putstr_fd("Error:\nInvalid map.\n", 1);
-				exit (0);
-			}
-			j++;
+			if (check_fstandlst(game->map[i], &check, game))
+				ft_exit("Error:\nInvalid map.\n", game, EXIT_FAILURE);
 		}
+		else
+		{
+			if (check_mid(game->map[i], &check, game, i))
+				ft_exit("Error:\nInvalid map.\n", game, EXIT_FAILURE);
+		}
+		// j = 0;
+		// while (game->map[i][j])
+		// {
+		// 	if (j == 0 || j == (game->map_x - 1))
+		// 	{
+		// 		if (check_fstandlst(game->map[i])
+		// 		if (game->map[i][j] != '1')
+		// 			ft_exit("Error:\nInvalid map.\n", game, EXIT_FAILURE);
+		// 	}
+		// 	if ((i == 0) && (game->map[i][j] != '1'))
+		// 		ft_exit("Error:\nInvalid map.\n", game, EXIT_FAILURE);
+		// 	if (game->map[i][j] == '0')
+		// 		check.m_spaces = 1;
+		// 	else if (game->map[i][j] == '1')
+		// 		check.m_wall = 1;
+		// 	else if (game->map[i][j] == 'C')
+		// 	{
+		// 		check.m_collectible = 1;
+		// 		game->amt_collectible++;
+		// 	}
+		// 	else if (game->map[i][j] == 'E')
+		// 		check.m_exit = 1;
+		// 	else if (game->map[i][j] == 'P')
+		// 	{
+		// 		game->player_x = j;
+		// 		game->player_y = i;
+		// 		check.m_player++;
+		// 	}
+		// 	else if (game->map[i][j] == '\n' || game->map[i][j] == '\0')
+		// 		check.m_newline = 1;
+		// 	else
+		// 		ft_exit("Error:\nInvalid map.\n", game, EXIT_FAILURE);
+		// 	j++;
+		// }
 		i++;
 	}
 	if (!check.m_spaces || !check.m_wall
 		||!check.m_collectible || !check.m_exit
 		|| !(check.m_player == 1))
-	{
-		ft_putstr_fd("Error:\nInvalid map.\n", 1);
-		exit (0);
-	}
+		ft_exit("Error:\nInvalid map.\n", game, EXIT_FAILURE);
 }
 
 void	ft_read_map(t_game *game)

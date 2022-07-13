@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 07:29:20 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/12 21:33:11 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/13 13:38:48 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,4 +108,8 @@ int		ft_mouse(t_window *vars);
 //image
 void	ft_make_image(t_game *game);
 void	put_to_screen(t_game *game);
+
+// closing
+void	ft_free_game(t_game *game);
+void	ft_exit(char *str, t_game *game, int exit_number);
 #endif

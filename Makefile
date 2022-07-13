@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+         #
+#    By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/02 18:29:29 by libacchu          #+#    #+#              #
-#    Updated: 2022/07/11 18:31:29 by libacchu         ###   ########.fr        #
+#    Updated: 2022/07/13 11:19:45 by libacchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRCS = 	./src/main.c \
 		./src/free.c \
 		./src/win_management.c \
 		./src/image.c \
+		./src/exit.c \
 
 OBJS = $(SRCS:.c=.o)
 INCLUDE = ./include/
