@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 10:10:57 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/13 22:14:45 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/13 22:19:21 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,23 @@ int	check_fstandlst(char *line, t_mapc *check, t_game *game)
 
 void	check_characters(char c, t_game *game, t_mapc *check)
 {
-		if (c == '0')
-			check->m_spaces = 1;
-		else if (c == 'C')
-		{
-			check->m_collectible = 1;
-			game->amt_collectible++;
-		}
-		else if (c == 'E')
-			check->m_exit = 1;
-		else if (c == 'P')
-			check->m_player++;
-		else if (c == '1')
-			check->m_wall = 1;
-		else if (c == '\n' || c == '\0')
-			check->m_newline = 1;
-		else
-			ft_exit("Error:\nInvalid map.\n", game, EXIT_FAILURE);
+	if (c == '0')
+		check->m_spaces = 1;
+	else if (c == 'C')
+	{
+		check->m_collectible = 1;
+		game->amt_collectible++;
+	}
+	else if (c == 'E')
+		check->m_exit = 1;
+	else if (c == 'P')
+		check->m_player++;
+	else if (c == '1')
+		check->m_wall = 1;
+	else if (c == '\n' || c == '\0')
+		check->m_newline = 1;
+	else
+		ft_exit("Error:\nInvalid map.\n", game, EXIT_FAILURE);
 }
 
 int	check_mid(char *line, t_mapc *check, t_game *game, int y)
