@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 07:29:20 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/13 13:38:48 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/14 00:02:28 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ typedef struct s_window
 
 typedef struct s_image
 {
-    void	*img;
-    char	*addr;
-    char	*path;
-    int		bpp;
-    int		line_len;
-    int		endian;
-}	t_image; 
+	void	*img;
+	char	*addr;
+	char	*path;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}		t_image;
 
 // Keyboard
 enum	e_keystroke
@@ -90,6 +90,7 @@ typedef struct s_game
 	int			y;
 	int			points;
 	int			amt_collectible;
+	int			amt_of_moves;
 	int			flag;
 	t_mapc		*mapc;
 }		t_game;
@@ -108,8 +109,20 @@ int		ft_mouse(t_window *vars);
 //image
 void	ft_make_image(t_game *game);
 void	put_to_screen(t_game *game);
+void	make_player(t_game *game);
+void	make_empty_space(t_game *game);
+void	make_wall(t_game *game);
+void	make_collectible(t_game *game);
+void	make_exit(t_game *game);
 
 // closing
 void	ft_free_game(t_game *game);
 void	ft_exit(char *str, t_game *game, int exit_number);
+
+// Player moves
+void	ft_move_right(t_game *game);
+void	ft_move_left(t_game *game);
+void	ft_move_up(t_game *game);
+void	ft_move_down(t_game *game);
+
 #endif

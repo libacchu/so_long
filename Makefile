@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+         #
+#    By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/02 18:29:29 by libacchu          #+#    #+#              #
-#    Updated: 2022/07/13 11:19:45 by libacchu         ###   ########.fr        #
+#    Updated: 2022/07/14 01:27:18 by libacchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,8 @@ SRCS = 	./src/main.c \
 		./src/win_management.c \
 		./src/image.c \
 		./src/exit.c \
+		./src/file_to_image.c \
+		./src/player_moves.c \
 
 OBJS = $(SRCS:.c=.o)
 INCLUDE = ./include/
@@ -33,14 +35,14 @@ MLX = ./minilibx_opengl/
 # LMLX = -I /usr/X11/include -g -lmlx -framework OpenGL -framework AppKit
 # LMLX = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
-all: libft $(NAME)
-# all: libft mlx $(NAME)
+# all: libft $(NAME)
+all: libft mlx $(NAME)
 
 libft:
 	make -C $(LIBFT)
 
-# mlx:
-# 	make -C $(MLX)
+mlx:
+	make -C $(MLX)
 
 $(NAME): $(OBJS) libft mlx
 	# make -C $(LIBFT)
@@ -51,7 +53,7 @@ $(NAME): $(OBJS) libft mlx
 
 clean:
 	make clean -C $(LIBFT)
-	# make clean -C $(MLX)
+	make clean -C $(MLX)
 	$(RM) $(OBJS)
 
 fclean: clean

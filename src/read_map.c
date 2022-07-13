@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 10:10:57 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/13 22:19:21 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/13 23:35:32 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,10 @@ int	check_mid(char *line, t_mapc *check, t_game *game, int y)
 	while (line[count] != '\n' && line[count] != '\0')
 	{
 		if (line[count] == 'P')
+		{
 			game->player_x = count;
-			game->player_y = y - 1;
+			game->player_y = y;
+		}
 		check_characters(line[count], game, check);
 		count++;
 	}
