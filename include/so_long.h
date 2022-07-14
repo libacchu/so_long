@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 07:29:20 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/14 00:02:28 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/14 15:13:03 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,32 +19,12 @@
 # include <fcntl.h>
 # include <math.h>
 
-// Maps locations
-# define MAP1
-
 // Assets location
 # define MAP_PLAYER "./assets/player.xpm"
 # define MAP_EMPTY_SPACE "./assets/empty_space.xpm"
 # define MAP_WALLS "./assets/wall.xpm"
 # define MAP_COLLECT "./assets/collectible.xpm"
 # define MAP_EXIT "./assets/exit.xpm"
-
-// Window handling
-typedef struct s_window
-{
-	void	*mlx;
-	void	*win;
-}		t_window;
-
-typedef struct s_image
-{
-	void	*img;
-	char	*addr;
-	char	*path;
-	int		bpp;
-	int		line_len;
-	int		endian;
-}		t_image;
 
 // Keyboard
 enum	e_keystroke
@@ -81,9 +61,6 @@ typedef struct s_game
 	char		*map_path;
 	int			player_x;
 	int			player_y;
-	char		*relative_path;
-	int			img_width;
-	int			img_height;
 	int			map_x;
 	int			map_y;
 	int			x;
@@ -92,19 +69,18 @@ typedef struct s_game
 	int			amt_collectible;
 	int			amt_of_moves;
 	int			flag;
-	t_mapc		*mapc;
 }		t_game;
 
 // Event handling
 int		ft_key(int keystroke, t_game *game);
-int		ft_close_win(int keycode, t_window *win);
-int		key_hook(int keycode, t_window *win);
+int		ft_close_win(int keycode, t_game *game);
+int		key_hook(int keycode, t_game *game);
 int		ft_move_img(int keystroke, t_game *img);
 
 // Read Map
 void	ft_read_map(t_game *game);
 void	ft_error_check(t_game *game, int ac, char **av);
-int		ft_mouse(t_window *vars);
+int		ft_mouse(t_game *game);
 
 //image
 void	ft_make_image(t_game *game);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+         #
+#    By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/02 18:29:29 by libacchu          #+#    #+#              #
-#    Updated: 2022/07/14 01:27:18 by libacchu         ###   ########.fr        #
+#    Updated: 2022/07/14 15:30:16 by libacchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ OBJS = $(SRCS:.c=.o)
 INCLUDE = ./include/
 NAME = so_long
 
-CC = gcc -Wall -Werror -Wextra
+CC = gcc -Wall -Werror -Wextra -g
 RM = rm -f
 
 LIBFT = libft/

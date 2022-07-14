@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 11:12:06 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/13 14:01:49 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/14 15:15:38 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	ft_exit(char *err_mess, t_game *game, int ex_num)
 {
 	if (err_mess)
 		ft_putstr_fd(err_mess, 1);
+	if (game->mlx && game->win)
+		mlx_destroy_window(game->mlx, game->win);
 	ft_free_game(game);
 	exit (ex_num);
 }
