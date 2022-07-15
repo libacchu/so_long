@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 07:29:20 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/14 15:13:03 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/15 15:06:27 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ int		ft_move_img(int keystroke, t_game *img);
 void	ft_read_map(t_game *game);
 void	ft_error_check(t_game *game, int ac, char **av);
 int		ft_mouse(t_game *game);
+void	print_map(t_game *game);
 
 //image
 void	ft_make_image(t_game *game);

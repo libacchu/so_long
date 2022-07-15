@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 11:12:06 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/14 15:15:38 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/15 15:51:40 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ void	ft_exit(char *err_mess, t_game *game, int ex_num)
 {
 	if (err_mess)
 		ft_putstr_fd(err_mess, 1);
-	if (game->mlx && game->win)
-		mlx_destroy_window(game->mlx, game->win);
-	ft_free_game(game);
+	// if (game->mlx && game->win)
+	// 	mlx_destroy_window(game->mlx, game->win);
+	if (game)
+		ft_free_game(game);
+	// game = NULL;
 	exit (ex_num);
 }

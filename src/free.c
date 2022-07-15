@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:43:37 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/14 15:45:27 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/15 15:47:31 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,12 @@ void	ft_free_map(t_game *game)
 	int	i;
 
 	i = 0;
-	while (game->map[i])
-		free(game->map[i++]);
+	ft_printf("----HERE----\n");
+	while (i < game->map_y)
+	{
+		free(game->map[i]);
+		i++;
+	}
 	free(game->map);
 }
 
@@ -27,7 +31,7 @@ void	ft_free_game(t_game *game)
 	if (game->mlx)
 		free(game->mlx);
 	if (game->win)
-		free(game->mlx);
+		free(game->win);
 	if (game->img_player)
 		free(game->img_player);
 	if (game->img_empty_space)
@@ -38,8 +42,12 @@ void	ft_free_game(t_game *game)
 		free(game->img_collectible);
 	if (game->img_exit)
 		free(game->img_exit);
-	if (game->map_path)
-		free(game->map_path);
+	// ft_printf("game->map_path = %s\n", game->map);
+	// if (game->map_path)
+	// 	free(game->map_path);
 	if (game->map)
 		ft_free_map(game);
+	if (game)
+		free(game);
+	// (void) game;
 }
