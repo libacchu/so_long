@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 10:10:57 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/13 23:35:32 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/18 12:54:42 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	ft_check_map_char(t_game *game)
 
 	check = (t_mapc){};
 	i = 0;
-	while (game->map[i] && i < game->map_y)
+	while (i < game->map_y)
 	{
 		if (i == 0 || i == (game->map_y - 1))
 		{
