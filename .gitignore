@@ -1,3 +1,4 @@
 *.o
 *.a
 so_long.dSYM
+.DS_Store

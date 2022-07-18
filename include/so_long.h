@@ -6,14 +6,14 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 07:29:20 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/18 17:27:08 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/18 18:47:03 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../minilibx/mlx.h"
+# include ".././minilibx/mlx.h"
 # include "../libft/libft.h"
 # include <unistd.h>
 # include <fcntl.h>

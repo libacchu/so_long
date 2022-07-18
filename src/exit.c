@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 11:12:06 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/18 14:44:00 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/18 18:49:09 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	ft_exit(char *err_mess, t_game *game, int ex_num)
 {
 	if (err_mess)
 		ft_putstr_fd(err_mess, 1);
-	printf("--------HERE--------\n");
 	if (game)
 		ft_free_game(game);
 	exit (ex_num);

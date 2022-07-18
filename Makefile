@@ -6,7 +6,7 @@
 #    By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/02 18:29:29 by libacchu          #+#    #+#              #
-#    Updated: 2022/07/18 17:27:26 by libacchu         ###   ########.fr        #
+#    Updated: 2022/07/18 18:47:50 by libacchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ CC = gcc -Wall -Werror -Wextra -g -Og
 RM = rm -f
 
 LIBFT = ./libft/libft.a
-LIBFT_DIR = libft/
+LIBFT_DIR = ./libft/
 
 MLX = ./minilibx/libmlx.a
 MLX_DIR= ./minilibx/
@@ -45,8 +45,6 @@ mlx:
 $(NAME): $(OBJS) libft mlx
 	# make -C $(LIBFT)
 	$(CC) $(OBJS) $(LIBFT) $(MLX) -L/usr/X11/lib -lXext -lX11 -o $(NAME)
-
-# -framework OpenGL -framework AppKit
 
 clean:
 	make clean -C $(LIBFT_DIR)
