@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+         #
+#    By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/02 18:29:29 by libacchu          #+#    #+#              #
-#    Updated: 2022/07/15 15:06:44 by libacchu         ###   ########.fr        #
+#    Updated: 2022/07/18 15:16:08 by libacchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,21 +25,16 @@ OBJS = $(SRCS:.c=.o)
 INCLUDE = ./include/
 NAME = so_long
 
-CC = gcc -Wall -Werror -Wextra -g
+CC = gcc -Wall -Werror -Wextra -g -Og
 RM = rm -f
 
 LIBFT = ./libft/libft.a
 LIBFT_DIR = libft/
 
-MLX = ./minilibx_opengl/libmlx.a
-MLX_DIR= ./minilibx_opengl/
+MLX = ./minilibx-linux/libmlx.a
+MLX_DIR= ./minilibx-linux/
 
-# LMLX = -I /usr/X11/include -g -L/usr/X11/lib -lmlx -framework OpenGL -framework AppKit
-# LMLX = -I /usr/X11/include -g -lmlx -framework OpenGL -framework AppKit
-# LMLX = -Lmlx -lmlx -framework OpenGL -framework AppKit
-
-# all: libft $(NAME)
-all: libft mlx $(NAME)
+all: $(NAME)
 
 libft:
 	make -C $(LIBFT_DIR)
@@ -49,10 +44,9 @@ mlx:
 
 $(NAME): $(OBJS) libft mlx
 	# make -C $(LIBFT)
-	$(CC) $(OBJS) $(LIBFT) $(MLX) -framework OpenGL -framework AppKit -o $(NAME)
+	$(CC) $(OBJS) $(LIBFT) $(MLX) -L/usr/X11/lib -lXext -lX11 -o $(NAME)
 
-# %.o: %.c
-# 	@$(CC) -Imlx -c $< -o $@
+# -framework OpenGL -framework AppKit
 
 clean:
 	make clean -C $(LIBFT_DIR)

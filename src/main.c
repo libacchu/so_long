@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 13:31:15 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/15 15:39:33 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/18 15:18:04 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_game	*ft_init(void)
 	game->y = 0;
 	game->points = 0;
 	game->amt_collectible = 0;
-	game->amt_of_moves = 0;
+	game->amt_of_moves = 1;
 	game->flag = 0;
 	return (game);
 }
@@ -41,7 +41,7 @@ int	main(int ac, char **av)
 	game->win = mlx_new_window(game->mlx, (game->map_x * 64),
 			(game->map_y * 64), "so_long");
 	ft_make_image(game);
-	mlx_hook(game->win, 2, 1L << 0, ft_key, game);
+	mlx_hook(game->win, 2, 1L, ft_key, game);
 	mlx_hook(game->win, 17, 0, ft_mouse, game);
 	mlx_loop(game->mlx);
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   win_management.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 11:53:12 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/15 13:00:02 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/18 15:21:25 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

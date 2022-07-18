@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 13:41:15 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/14 00:09:48 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/18 14:52:25 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	put_to_screen(t_game *game)
 	void	*tmp;
 
 	i = 0;
-	tmp = malloc(sizeof(void *));
+	// tmp = malloc(sizeof(void *));
 	while (i < game->map_y)
 	{
 		j = 0;
@@ -47,7 +47,7 @@ void	put_to_screen(t_game *game)
 		}
 		i++;
 	}
-	free(tmp);
+	// free(tmp);
 }
 
 void	ft_make_image(t_game *game)
@@ -58,6 +58,4 @@ void	ft_make_image(t_game *game)
 	make_collectible(game);
 	make_exit(game);
 	put_to_screen(game);
-	game->points = 0;
-	game->amt_of_moves = 1;
 }

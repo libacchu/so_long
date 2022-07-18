@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:35:25 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/15 14:47:15 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/18 13:03:00 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,14 @@ int	ft_numoflines(t_game *game)
 	game->map_y = 0;
 	while (line != NULL)
 	{
+		free(line);
 		line = get_next_line(fd);
 		if (line)
 			ft_checkline_len(line, line_len, game, fd);
-		free(line);
 		game->map_y++;
 	}
+	if (line)
+		free(line);
 	close(fd);
 	return (game->map_y);
 }
