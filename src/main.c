@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 13:31:15 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/18 21:50:42 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/18 22:00:56 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static int redraw(t_game *game)
 	put_to_screen(game);
 	return (0);
 }
+
 int	main(int ac, char **av)
 {
 	t_game		*game;
