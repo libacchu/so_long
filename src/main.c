@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 13:31:15 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/18 15:18:04 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/18 19:43:01 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,14 @@ t_game	*ft_init(void)
 	t_game	*game;
 
 	game = malloc(sizeof(t_game));
+	game->mlx = 0;
+	game->win = 0;
+	game->img_player = 0;
+	game->img_empty_space = 0;
+	game->img_wall = 0;
+	game->img_collectible = 0;
+	game->img_exit = 0;
+	game->map = 0;
 	game->player_x = 0;
 	game->player_y = 0;
 	game->map_x = 0;

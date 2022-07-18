@@ -6,11 +6,21 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:43:37 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/18 18:50:43 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/18 21:01:56 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+void	ft_free_img(void *mlx, void *ptr)
+{
+	if (ptr)
+	{
+		mlx_destroy_image(mlx, ptr);
+		free(ptr);
+	}
+	ptr = NULL;
+}
 
 void	ft_free_map(t_game *game)
 {
@@ -25,24 +35,37 @@ void	ft_free_map(t_game *game)
 	free(game->map);
 }
 
+void	ft_free_mlx(void *mlx)
+{
+	mlx_destroy_display(mlx);
+	// free(mlx);
+	mlx = 0;
+}
+
+void	ft_free_game_struct(t_game *game)
+{
+	free(game);
+	game = 0;
+}
+
 void	ft_free_game(t_game *game)
 {
 	if (game->img_player)
-		mlx_destroy_image(game->mlx, game->img_player);
+		ft_free_img(game->mlx, game->img_player);
 	if (game->img_empty_space)
-		mlx_destroy_image(game->mlx, game->img_empty_space);
+		ft_free_img(game->mlx, game->img_empty_space);
 	if (game->img_wall)
-		mlx_destroy_image(game->mlx, game->img_wall);
+		ft_free_img(game->mlx, game->img_wall);
 	if (game->img_collectible)
-		mlx_destroy_image(game->mlx, game->img_collectible);
+		ft_free_img(game->mlx, game->img_collectible);
 	if (game->img_exit)
-		mlx_destroy_image(game->mlx, game->img_exit);
+		ft_free_img(game->mlx, game->img_exit);
 	if (game->mlx && game->win)
 		mlx_destroy_window(game->mlx, game->win);
+	if (game->mlx)
+		ft_free_mlx(game->mlx);
 	if (game->map)
 		ft_free_map(game);
-	if (game->mlx)
-		free(game->mlx);
 	if (game)
-		free(game);
+		ft_free_game_struct(game);
 }

@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 10:10:57 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/18 17:22:54 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/18 21:06:05 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,13 +102,14 @@ void	ft_read_map(t_game *game)
 	int	i;
 
 	fd = open(game->map_path, O_RDONLY);
-	game->map = (char **)malloc(game->map_y * sizeof(char *));
+	game->map = (char **)malloc((game->map_y + 1) * sizeof(char *));
 	i = 0;
 	while (i < game->map_y)
 	{
 		game->map[i] = get_next_line(fd);
 		i++;
 	}
+	game->map[i] = 0;
 	game->map_x = ft_strlen(game->map[i - 1]);
 	close(fd);
 	ft_check_map_char(game);
