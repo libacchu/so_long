@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 13:31:15 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/18 19:43:01 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/18 21:50:42 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ t_game	*ft_init(void)
 	return (game);
 }
 
+static int redraw(t_game *game)
+{
+	put_to_screen(game);
+	return (0);
+}
 int	main(int ac, char **av)
 {
 	t_game		*game;
@@ -50,6 +55,7 @@ int	main(int ac, char **av)
 			(game->map_y * 64), "so_long");
 	ft_make_image(game);
 	mlx_hook(game->win, 2, 1L, ft_key, game);
+	mlx_expose_hook(game->win, redraw, game);
 	mlx_hook(game->win, 17, 0, ft_mouse, game);
 	mlx_loop(game->mlx);
 	return (0);

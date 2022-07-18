@@ -6,7 +6,7 @@
 #    By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/02 18:29:29 by libacchu          #+#    #+#              #
-#    Updated: 2022/07/18 18:47:50 by libacchu         ###   ########.fr        #
+#    Updated: 2022/07/18 21:31:15 by libacchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ OBJS = $(SRCS:.c=.o)
 INCLUDE = ./include/
 NAME = so_long
 
-CC = gcc -Wall -Werror -Wextra -g -Og
+CC = gcc -Wall -Werror -Wextra
 RM = rm -f
 
 LIBFT = ./libft/libft.a

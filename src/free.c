@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:43:37 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/18 21:01:56 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/18 21:13:31 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	ft_free_map(t_game *game)
 void	ft_free_mlx(void *mlx)
 {
 	mlx_destroy_display(mlx);
-	// free(mlx);
 	mlx = 0;
 }
 
