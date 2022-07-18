@@ -6,7 +6,7 @@
 #    By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/02 18:29:29 by libacchu          #+#    #+#              #
-#    Updated: 2022/07/18 15:16:08 by libacchu         ###   ########.fr        #
+#    Updated: 2022/07/18 17:27:26 by libacchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,8 @@ RM = rm -f
 LIBFT = ./libft/libft.a
 LIBFT_DIR = libft/
 
-MLX = ./minilibx-linux/libmlx.a
-MLX_DIR= ./minilibx-linux/
+MLX = ./minilibx/libmlx.a
+MLX_DIR= ./minilibx/
 
 all: $(NAME)
 

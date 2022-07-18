@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 11:53:12 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/18 15:21:25 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/18 17:10:51 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 int	ft_key(int keycode, t_game *game)
 {
 	if (keycode == KEY_ESC)
-	{
-		mlx_destroy_window(game->mlx, game->win);
 		ft_exit(NULL, game, EXIT_SUCCESS);
-	}
 	if (keycode == KEY_W)
 		ft_move_up(game);
 	if (keycode == KEY_A)
@@ -32,7 +29,6 @@ int	ft_key(int keycode, t_game *game)
 
 int	ft_mouse(t_game *game)
 {
-	mlx_destroy_window(game->mlx, game->win);
 	ft_exit(NULL, game, EXIT_SUCCESS);
 	return (0);
 }
