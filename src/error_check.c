@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:35:25 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/18 13:03:00 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/19 10:09:31 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_checkline_len(char *line, size_t fst_len, t_game *game, int fd)
 	{
 		free(line);
 		close(fd);
-		ft_exit("Error", game, EXIT_FAILURE);
+		ft_exit("Error\nInvalid map. Map not rectangle.", game, EXIT_FAILURE);
 	}
 }
 
@@ -36,7 +36,7 @@ int	ft_numoflines(t_game *game)
 	fd = open(game->map_path, O_RDONLY);
 	line = get_next_line(fd);
 	if (!line || !fd || fd < 0)
-		ft_exit("Error", game, EXIT_FAILURE);
+		ft_exit("Error\nCheck map!", game, EXIT_FAILURE);
 	line_len = ft_strlen(line) - 1;
 	game->map_y = 0;
 	while (line != NULL)
@@ -60,14 +60,14 @@ void	ft_checkfile_end(t_game *game)
 
 	ending = ft_strrchr(game->map_path, '.');
 	if (!ending || ft_strlen(ending) != 4)
-		ft_exit("Error: Invalid map file.\n", game, EXIT_FAILURE);
+		ft_exit("Error\nInvalid map file.\n", game, EXIT_FAILURE);
 	else
 	{
 		i = 0;
 		while (ending[i] != '\0')
 		{
 			if (ending[i] != ".ber"[i])
-				ft_exit("Error: Invalid map file.\n", game, EXIT_FAILURE);
+				ft_exit("Error\nInvalid map file.\n", game, EXIT_FAILURE);
 			i++;
 		}
 	}
@@ -76,7 +76,7 @@ void	ft_checkfile_end(t_game *game)
 void	ft_error_check(t_game *game, int ac, char **av)
 {
 	if (ac != 2)
-		ft_exit("Error: Invalid input.\n", game, EXIT_FAILURE);
+		ft_exit("Error\nInvalid input.\n./so_long [maps]\n", game, EXIT_FAILURE);
 	game->map_path = av[1];
 	ft_checkfile_end(game);
 	ft_numoflines(game);

@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 10:10:57 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/18 21:06:05 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/19 10:08:03 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@ void	ft_check_map_char(t_game *game)
 		i++;
 	}
 	if (!check.m_wall ||!check.m_collectible || !check.m_exit
-		|| !(check.m_player == 1))
-		ft_exit("Error: Invalid map.\n", game, EXIT_FAILURE);
+		|| !check.m_spaces || !(check.m_player == 1))
+		ft_exit("Error\nInvalid map.\nCheck map characters.", game, EXIT_FAILURE);
 }
 
 void	ft_read_map(t_game *game)
