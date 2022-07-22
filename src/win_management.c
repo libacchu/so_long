@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   win_management.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 11:53:12 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/18 17:10:51 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/22 22:18:31 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_key(int keycode, t_game *game)
 {
 	if (keycode == KEY_ESC)
-		ft_exit(NULL, game, EXIT_SUCCESS);
+		ft_exit(">>GAME EXIT<<\n", game, EXIT_SUCCESS);
 	if (keycode == KEY_W)
 		ft_move_up(game);
 	if (keycode == KEY_A)
@@ -29,6 +29,6 @@ int	ft_key(int keycode, t_game *game)
 
 int	ft_mouse(t_game *game)
 {
-	ft_exit(NULL, game, EXIT_SUCCESS);
+	ft_exit(">>GAME EXIT<<\n", game, EXIT_SUCCESS);
 	return (0);
 }

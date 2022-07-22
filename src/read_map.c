@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 10:10:57 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/19 10:08:03 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/22 22:11:47 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	check_characters(char c, t_game *game, t_mapc *check)
 	else if (c == '\n' || c == '\0')
 		check->m_newline = 1;
 	else
-		ft_exit("Error: Invalid map.\n", game, EXIT_FAILURE);
+		ft_exit("Error:\nInvalid map.\n", game, EXIT_FAILURE);
 }
 
 int	check_mid(char *line, t_mapc *check, t_game *game, int y)
@@ -82,12 +82,12 @@ void	ft_check_map_char(t_game *game)
 		if (i == 0 || i == (game->map_y - 1))
 		{
 			if (check_fstandlst(game->map[i], &check, game))
-				ft_exit("Error: Invalid map.\n", game, EXIT_FAILURE);
+				ft_exit("Error:\nInvalid map.\n", game, EXIT_FAILURE);
 		}
 		else
 		{
 			if (check_mid(game->map[i], &check, game, i))
-				ft_exit("Error: Invalid map.\n", game, EXIT_FAILURE);
+				ft_exit("Error:\nInvalid map.\n", game, EXIT_FAILURE);
 		}
 		i++;
 	}

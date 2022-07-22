@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:35:25 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/19 10:09:31 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/22 22:12:51 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_checkline_len(char *line, size_t fst_len, t_game *game, int fd)
 	{
 		free(line);
 		close(fd);
-		ft_exit("Error\nInvalid map. Map not rectangle.", game, EXIT_FAILURE);
+		ft_exit("Error\nInvalid map.\nMap not rectangle.", game, EXIT_FAILURE);
 	}
 }
 
