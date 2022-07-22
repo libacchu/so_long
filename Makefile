@@ -3,12 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+         #
+#    By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/02 18:29:29 by libacchu          #+#    #+#              #
-#    Updated: 2022/07/18 21:31:15 by libacchu         ###   ########.fr        #
+#    Updated: 2022/07/22 21:46:33 by libacchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+NAME = so_long
 
 SRCS = 	./src/main.c \
 		./src/read_map.c \
@@ -22,33 +24,32 @@ SRCS = 	./src/main.c \
 		./src/print_map.c \
 
 OBJS = $(SRCS:.c=.o)
+
 INCLUDE = ./include/
-NAME = so_long
 
 CC = gcc -Wall -Werror -Wextra
 RM = rm -f
 
-LIBFT = ./libft/libft.a
 LIBFT_DIR = ./libft/
+LIBFT = ./libft/libft.a
 
-MLX = ./minilibx/libmlx.a
 MLX_DIR= ./minilibx/
+MLX = ./minilibx/libmlx.a
 
 all: $(NAME)
 
-libft:
-	make -C $(LIBFT_DIR)
+$(NAME): $(LIBFT) $(MLX)
+	$(CC) $(SRCS) $(LIBFT) $(MLX) -L/usr/X11/lib -lXext -lX11 -o $(NAME)
 
-mlx:
+$(MLX):
 	make -C $(MLX_DIR)
-
-$(NAME): $(OBJS) libft mlx
-	# make -C $(LIBFT)
-	$(CC) $(OBJS) $(LIBFT) $(MLX) -L/usr/X11/lib -lXext -lX11 -o $(NAME)
-
+	
+$(LIBFT):
+	make -C $(LIBFT_DIR)
+	
 clean:
-	make clean -C $(LIBFT_DIR)
 	make clean -C $(MLX_DIR)
+	make clean -C $(LIBFT_DIR)
 	$(RM) $(OBJS)
 
 fclean: clean

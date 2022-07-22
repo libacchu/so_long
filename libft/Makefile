@@ -6,7 +6,7 @@
 #    By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/01 09:34:05 by libacchu          #+#    #+#              #
-#    Updated: 2022/04/14 23:29:34 by libacchu         ###   ########.fr        #
+#    Updated: 2022/07/22 21:31:50 by libacchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,18 +43,18 @@ AR = ar
 ARFLAGS = rcs
 
 $(NAME):
-	@$(CC) -c $(CFLAGS) $(FUNCTIONS_P1) $(GNL) $(PERSONAL) $(PRINTF)
+	$(CC) -c $(CFLAGS) $(FUNCTIONS_P1) $(GNL) $(PERSONAL) $(PRINTF)
 	@$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 	
 all: $(NAME)
 	
 clean:
-	@$(RM) $(OBJS) $(BONUS_OBJS)
+	$(RM) $(OBJS) $(BONUS_OBJS)
 
 fclean: clean 
-	@$(RM) $(NAME)
+	$(RM) $(NAME)
 
 re: fclean $(NAME)
 
 bonus: $(OBJS) $(BONUS_OBJS)
-	@$(AR) $(ARFLAGS) $(NAME) $(OBJS) $(BONUS_OBJS)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJS) $(BONUS_OBJS)
