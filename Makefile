@@ -6,7 +6,7 @@
 #    By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/02 18:29:29 by libacchu          #+#    #+#              #
-#    Updated: 2022/07/22 21:46:33 by libacchu         ###   ########.fr        #
+#    Updated: 2022/07/22 21:57:35 by libacchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ MLX = ./minilibx/libmlx.a
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(MLX)
+$(NAME): $(LIBFT) $(MLX) $(SRCS)
 	$(CC) $(SRCS) $(LIBFT) $(MLX) -L/usr/X11/lib -lXext -lX11 -o $(NAME)
 
 $(MLX):

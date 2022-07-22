@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:43:37 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/18 21:13:31 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/22 21:57:03 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 void	ft_free_img(void *mlx, void *ptr)
 {
 	if (ptr)
-	{
 		mlx_destroy_image(mlx, ptr);
-		free(ptr);
-	}
 	ptr = NULL;
 }
 
