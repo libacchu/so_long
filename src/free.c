@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:43:37 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/22 22:07:10 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/23 08:55:17 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	ft_free_map(t_game *game)
 	while (i < game->map_y)
 	{
 		free(game->map[i]);
+		game->map[i] = 0;
 		i++;
 	}
 	free(game->map);

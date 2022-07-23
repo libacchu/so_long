@@ -6,11 +6,21 @@
 /*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:35:25 by libacchu          #+#    #+#             */
-/*   Updated: 2022/07/22 22:12:51 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/07/23 09:19:54 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+static int	ft_free_line(char *line)
+{
+	if (line)
+	{
+		free(line);
+		line = 0;
+	}
+	return (0);
+}
 
 void	ft_checkline_len(char *line, size_t fst_len, t_game *game, int fd)
 {
@@ -21,9 +31,9 @@ void	ft_checkline_len(char *line, size_t fst_len, t_game *game, int fd)
 		len -= 1;
 	if (len != fst_len)
 	{
-		free(line);
+		ft_free_line(line);
 		close(fd);
-		ft_exit("Error\nInvalid map.\nMap not rectangle.", game, EXIT_FAILURE);
+		ft_exit("Error\nInvalid map.\nMap not rectangle.\n", game, EXIT_FAILURE);
 	}
 }
 
@@ -36,19 +46,19 @@ int	ft_numoflines(t_game *game)
 	fd = open(game->map_path, O_RDONLY);
 	line = get_next_line(fd);
 	if (!line || !fd || fd < 0)
-		ft_exit("Error\nCheck map!", game, EXIT_FAILURE);
+		ft_exit("Error\nCheck map!\n", game, EXIT_FAILURE);
 	line_len = ft_strlen(line) - 1;
 	game->map_y = 0;
 	while (line != NULL)
 	{
-		free(line);
+		ft_free_line(line);
 		line = get_next_line(fd);
 		if (line)
 			ft_checkline_len(line, line_len, game, fd);
 		game->map_y++;
 	}
 	if (line)
-		free(line);
+		ft_free_line(line);
 	close(fd);
 	return (game->map_y);
 }
